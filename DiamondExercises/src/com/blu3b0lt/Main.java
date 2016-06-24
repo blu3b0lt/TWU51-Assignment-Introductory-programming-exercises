@@ -25,15 +25,22 @@ public class Main {
             int option = exerciseStub.captureInput();
             switch (option) {
                 case 1: {
-                    exerciseStub.drawIsoscelesTriangle();
+                    System.out.print("Enter 'n': ");
+                    int lines = exerciseStub.captureInput();
+                    System.out.println("Output is: ");
+                    exerciseStub.drawIsoscelesTriangle(lines);
                     break;
                 }
                 case 2: {
-                    exerciseStub.drawDiamond();
+                    System.out.print("Enter 'n': ");
+                    int lines = exerciseStub.captureInput();
+                    exerciseStub.drawDiamond(lines);
                     break;
                 }
                 case 3: {
-                    exerciseStub.drawDiamondWithName();
+                    System.out.print("Enter 'n': ");
+                    int lines = exerciseStub.captureInput();
+                    exerciseStub.drawDiamondWithName(lines);
                     break;
                 }
                 case 4: {
@@ -44,19 +51,28 @@ public class Main {
 
     }
 
-    public void drawDiamondWithName() {
+    public void drawDiamondWithName(int lines) {
+        drawUprightIsoscelesTriangle(lines, true);
+        System.out.println(name);
+        drawInvertedIsoscelesTriangle(lines - 1);
+        return;
     }
 
-    public void drawDiamond() {
-        
+    public void drawDiamond(int lines) {
+        drawUprightIsoscelesTriangle(lines, false);
+        drawInvertedIsoscelesTriangle(lines-1);
+        return;
     }
 
-    public void drawIsoscelesTriangle() {
-        System.out.print("Enter 'n': ");
-        int lines = captureInput();
+    public void drawIsoscelesTriangle(int lines) {
+        drawUprightIsoscelesTriangle(lines, false);
+        return;
+    }
+
+
+    private void drawUprightIsoscelesTriangle(int lines, boolean skipLastLine) {
         int spaces = lines - 1;
         int times = 1;
-        System.out.println("Output is: ");
         while(lines > 0) {
             String output = fillSpaces(spaces);
             for(int counter = 0; counter < times; counter++) {
@@ -66,7 +82,27 @@ public class Main {
             times += 2;
             lines--;
             System.out.println(output);
+            if(skipLastLine && lines == 1) {
+                return;
+            }
         }
+
+    }
+
+    private void drawInvertedIsoscelesTriangle(int lines) {
+        int spaces = 1;
+        int times = ((lines - 1) * 2) + 1;
+        while(lines > 0) {
+            String output = fillSpaces(spaces);
+            for(int counter = 0; counter < times ; counter++) {
+                output += printString;
+            }
+            times -= 2;
+            spaces++;
+            lines--;
+            System.out.println(output);
+        }
+        return;
     }
 
     private String fillSpaces(int spaces) {
@@ -83,7 +119,7 @@ public class Main {
         System.out.println("1. Draw Isosceles Triangle");
         System.out.println("2. Draw Diamond");
         System.out.println("3. Draw Diamond with name");
-        System.out.println("4.Exit");
+        System.out.println("4. Exit");
         System.out.print("Enter your Choice: ");
 
     }
