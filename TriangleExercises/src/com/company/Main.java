@@ -28,17 +28,14 @@ public class Main {
                     break;
                 }
                 case 2:{
-                    System.out.println("Output is: ");
                     exerciseStub.drawHorizontalLine();
                     break;
                 }
                 case 3: {
-                    System.out.println("Output is: ");
                     exerciseStub.drawVerticalLine();
                     break;
                 }
                 case 4: {
-                    System.out.println("Output is: ");
                     exerciseStub.drawRightTriangle();
                     break;
                 }
@@ -66,6 +63,7 @@ public class Main {
     public void drawRightTriangle() {
         System.out.print("Enter 'n': ");
         int lines = captureInput();
+        System.out.println("Output is: ");
         int times = 1;
         while(lines > 0) {
             String output = "";
@@ -82,6 +80,7 @@ public class Main {
     public void drawHorizontalLine() {
         System.out.print("Enter 'n': ");
         int lines = captureInput();
+        System.out.println("Output is: ");
         String output = "";
         while(lines > 0) {
             output += printString;
@@ -93,6 +92,7 @@ public class Main {
 
     public void drawVerticalLine() {
         System.out.print("Enter 'n': ");
+        System.out.println("Output is: ");
         int lines = captureInput();
         while(lines > 0) {
             System.out.println(printString);
