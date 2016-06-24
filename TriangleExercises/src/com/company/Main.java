@@ -92,8 +92,8 @@ public class Main {
 
     public void drawVerticalLine() {
         System.out.print("Enter 'n': ");
-        System.out.println("Output is: ");
         int lines = captureInput();
+        System.out.println("Output is: ");
         while(lines > 0) {
             System.out.println(printString);
             lines--;
